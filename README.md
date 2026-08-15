@@ -20,16 +20,13 @@ Página inicial estática que lista bookmarks a partir de `bookmarks.yaml`.
 
 ## Como abrir
 
-Abra `index.html` direto no navegador. Como a página lê um arquivo local via `fetch`,
-é preciso liberar o acesso a arquivos locais:
+Abra `index.html` direto no navegador. Como a página lê um arquivo local via `fetch`, é preciso liberar o acesso a arquivos locais:
 
 - **Chrome/Chromium:** inicie com a flag
   `chromium --allow-file-access-from-files`
 - **Firefox:** em `about:config`, defina `privacy.file_unique_origin` como `false`
 
-Alternativa sem flags: servir o diretório por HTTP com `make serve`
-(equivale a `python3 -m http.server 8000`) e acessar `http://localhost:8000`.
-Use `make serve PORT=9000` para trocar a porta.
+Alternativa sem flags: servir o diretório por HTTP com `make serve` (equivale a `python3 -m http.server 8000`) e acessar `http://localhost:8000`. Use `make serve PORT=9000` para trocar a porta. Este comando pode ser configurado em qualquer tipo de serviço ou daemon que você preferir: systemd, init.d, background processes, autostart scripts, etc.
 
 ## Bookmarks
 
@@ -50,6 +47,6 @@ Apenas URLs `http://` e `https://` são renderizadas como links.
 - `/` foca o campo de busca
 - Qualquer tecla de letra também foca a busca e começa a filtrar
 - `Esc` limpa o filtro
-- Com a busca focada, `Up`, `Down`, `Left` e `Right` navegam pelos resultados
+- Teclas `Up`, `Down`, `Left` e `Right` navegam pelos resultados
 - `Enter` abre o bookmark selecionado
 - Botão no canto inferior direito alterna entre tema claro e escuro
