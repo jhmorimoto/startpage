@@ -1,0 +1,18 @@
+categories:
+  - name: Sites populares
+    bookmarks:
+      - title: Google
+        url: https://www.google.com/
+      - title: YouTube
+        url: https://www.youtube.com/
+      - title: Wikipedia
+        url: https://www.wikipedia.org/
+
+  - name: Tecnologia
+    bookmarks:
+      - title: GitHub
+        url: https://github.com/
+      - title: Amazon
+        url: https://www.amazon.com/
+      - title: MDN Web Docs
+        url: https://developer.mozilla.org/

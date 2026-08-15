@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startpage</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    // Inline e antes do CSS pintar: evita flash do tema errado no carregamento.
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('startpage-theme'); } catch (e) { /* storage bloqueado */ }
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="search-wrap">
+      <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="Buscar bookmarks…  (digite para buscar)"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Buscar bookmarks">
+      <button id="clear-search" class="clear-search" type="button" aria-label="Limpar busca" title="Limpar busca" hidden>×</button>
+    </div>
+  </header>
+
+  <main id="grid" class="grid" aria-live="polite"></main>
+
+  <p id="empty" class="empty" hidden>Nenhum bookmark encontrado.</p>
+  <div id="error" class="error" role="alert" hidden></div>
+
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar tema"></button>
+
+  <script src="vendor/js-yaml.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
