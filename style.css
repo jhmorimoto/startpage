@@ -98,7 +98,7 @@ body {
 
 .category h2 {
   margin: 0 0 0.75rem;
-  font-size: 0.78rem;
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -117,7 +117,8 @@ body {
 
 .category a {
   display: block;
-  padding: 0.35rem 0.5rem;
+  /* padding: 0.35rem 0.5rem; */
+  font-size: 0.9rem;
   border-radius: 6px;
   color: var(--text);
   text-decoration: none;
