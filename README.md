@@ -1,36 +1,41 @@
 # Startpage
 
-Página inicial estática que lista bookmarks a partir de `bookmarks.yaml`.
+Static start page that lists bookmarks from `bookmarks.yaml`.
 
-## Requisitos
+## Requirements
 
-- Apenas HTML/CSS/JavaScript simples, sem frameworks externos
-  (`js-yaml` é vendorizado localmente em `vendor/js-yaml.min.js`, sem CDN nem build)
-- Bookmarks carregados de um arquivo YAML no filesystem
-- Bookmark composto por nome, URL e categoria
-- Bookmarks exibidos em quadros, um por categoria
-- Estilo simples com temática flexível entre light e dark modes
-- Botão no canto inferior direito para trocar o tema
-- Somente leitura: sem funcionalidades de edição na interface
-- CSS em arquivo dedicado `style.css`
-- Input de busca/filtro no topo da página
-- Atalho de teclado `/` para acessar o input de busca; qualquer tecla de letra
-  também ativa a busca e já digita o caractere
-- Ao filtrar, esconder o que não bate e mostrar apenas os matches
+- Plain HTML/CSS/JavaScript only, with no external frameworks
+  (`js-yaml` is vendored locally in `vendor/js-yaml.min.js`, with no CDN or build step)
+- Bookmarks loaded from a YAML file on the filesystem
+- Each bookmark has a title, URL, and category
+- Bookmarks displayed in panels, one per category
+- Simple styling with flexible light and dark themes
+- Button in the bottom-right corner to switch themes
+- Read-only interface with no editing features
+- CSS in a dedicated `style.css` file
+- Search/filter input at the top
+- `/` keyboard shortcut to focus the search input; any letter key also focuses the search
+  and types the character
+- Filtering hides non-matching items and shows only matching results
 
-## Como abrir
+## Opening
 
-Abra `index.html` direto no navegador. Como a página lê um arquivo local via `fetch`, é preciso liberar o acesso a arquivos locais:
+Open `index.html` directly in a browser. Because the page reads a local file via `fetch`,
+local file access must be enabled:
 
-- **Chrome/Chromium:** inicie com a flag
+- **Chrome/Chromium:** start it with the flag
   `chromium --allow-file-access-from-files`
-- **Firefox:** em `about:config`, defina `privacy.file_unique_origin` como `false`
+- **Firefox:** set `privacy.file_unique_origin` to `false` in `about:config`
 
-Alternativa sem flags: servir o diretório por HTTP com `make serve` (equivale a `python3 -m http.server 8000`) e acessar `http://localhost:8000`. Use `make serve PORT=9000` para trocar a porta. Este comando pode ser configurado em qualquer tipo de serviço ou daemon que você preferir: systemd, init.d, background processes, autostart scripts, etc.
+Alternative without browser flags: serve the directory over HTTP with `make serve`
+(equivalent to `python3 -m http.server 8000`) and open `http://localhost:8000`.
+Use `make serve PORT=9000` to choose a different port. This command can be configured
+with any service or daemon you prefer, such as systemd, init.d, background processes,
+or autostart scripts.
 
 ## Bookmarks
 
-Edite `bookmarks.yaml`:
+Edit `bookmarks.yaml`:
 
 ```yaml
 categories:
@@ -40,13 +45,13 @@ categories:
         url: https://github.com
 ```
 
-Apenas URLs `http://` e `https://` são renderizadas como links.
+Only `http://` and `https://` URLs are rendered as links.
 
-## Uso
+## Usage
 
-- `/` foca o campo de busca
-- Qualquer tecla de letra também foca a busca e começa a filtrar
-- `Esc` limpa o filtro
-- Teclas `Up`, `Down`, `Left` e `Right` navegam pelos resultados
-- `Enter` abre o bookmark selecionado
-- Botão no canto inferior direito alterna entre tema claro e escuro
+- `/` focuses the search field
+- Any letter key also focuses the search and starts filtering
+- `Esc` clears the filter
+- `Up`, `Down`, `Left`, and `Right` navigate through the results
+- `Enter` opens the selected bookmark
+- The bottom-right button switches between light and dark themes

@@ -6,10 +6,10 @@
   <title>Startpage</title>
   <link rel="stylesheet" href="style.css">
   <script>
-    // Inline e antes do CSS pintar: evita flash do tema errado no carregamento.
+    // Inline and before the CSS paints: avoids flashing the wrong theme on load.
     (function () {
       var saved = null;
-      try { saved = localStorage.getItem('startpage-theme'); } catch (e) { /* storage bloqueado */ }
+      try { saved = localStorage.getItem('startpage-theme'); } catch (e) { /* storage blocked */ }
       var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
     })();
@@ -22,20 +22,20 @@
         id="search"
         class="search"
         type="search"
-        placeholder="Buscar bookmarks…  (digite para buscar)"
+        placeholder="Search bookmarks…  (type to search)"
         autocomplete="off"
         spellcheck="false"
-        aria-label="Buscar bookmarks">
-      <button id="clear-search" class="clear-search" type="button" aria-label="Limpar busca" title="Limpar busca" hidden>×</button>
+        aria-label="Search bookmarks">
+      <button id="clear-search" class="clear-search" type="button" aria-label="Clear search" title="Clear search" hidden>×</button>
     </div>
   </header>
 
   <main id="grid" class="grid" aria-live="polite"></main>
 
-  <p id="empty" class="empty" hidden>Nenhum bookmark encontrado.</p>
+  <p id="empty" class="empty" hidden>No bookmarks found.</p>
   <div id="error" class="error" role="alert" hidden></div>
 
-  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Alternar tema"></button>
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
 
   <script src="vendor/js-yaml.min.js"></script>
   <script src="app.js"></script>

@@ -1,5 +1,5 @@
 categories:
-  - name: Sites populares
+  - name: Popular sites
     bookmarks:
       - title: Google
         url: https://www.google.com/
@@ -8,7 +8,7 @@ categories:
       - title: Wikipedia
         url: https://www.wikipedia.org/
 
-  - name: Tecnologia
+  - name: Technology
     bookmarks:
       - title: GitHub
         url: https://github.com/

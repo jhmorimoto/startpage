@@ -9,12 +9,12 @@
   var toggle = document.getElementById('theme-toggle');
   var selectedBookmark = null;
 
-  /* ---------------- tema ---------------- */
+  /* ---------------- theme ---------------- */
 
   function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
     toggle.textContent = theme === 'dark' ? '☀' : '☾';
-    toggle.title = theme === 'dark' ? 'Mudar para tema claro' : 'Mudar para tema escuro';
+    toggle.title = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
   }
 
   applyTheme(document.documentElement.dataset.theme);
@@ -24,7 +24,7 @@
     applyTheme(next);
     try {
       localStorage.setItem('startpage-theme', next);
-    } catch (e) { /* storage bloqueado */ }
+    } catch (e) { /* storage blocked */ }
   });
 
   /* ---------------- render ---------------- */
@@ -52,7 +52,7 @@
     } else {
       var span = document.createElement('span');
       span.className = 'invalid';
-      span.textContent = (title || '(sem título)') + ' — URL inválida';
+      span.textContent = (title || '(untitled)') + ' — Invalid URL';
       li.appendChild(span);
     }
 
@@ -60,7 +60,7 @@
   }
 
   function renderCategory(category) {
-    var categoryName = String(category && category.name ? category.name : 'Sem categoria');
+    var categoryName = String(category && category.name ? category.name : 'Uncategorized');
     var bookmarks = Array.isArray(category && category.bookmarks) ? category.bookmarks : [];
     var items = bookmarks.map(function (bookmark) {
       return renderBookmark(bookmark, categoryName);
@@ -89,7 +89,7 @@
       if (section) grid.appendChild(section);
     });
     if (!grid.children.length) {
-      showError('Nenhuma categoria válida encontrada em bookmarks.yaml.');
+      showError('No valid categories found in bookmarks.yaml.');
     }
   }
 
@@ -225,7 +225,7 @@
       event.preventDefault();
       search.select();
     }
-    // Sem preventDefault para letras: o caractere digitado cai no input recém-focado.
+    // Do not preventDefault for letters: the typed character goes into the newly focused input.
     search.focus();
   });
 
@@ -251,10 +251,10 @@
 
   function showLoadError(detail) {
     showError(
-      'Não foi possível carregar bookmarks.yaml. Ao abrir a página via file://, ' +
-      'o navegador bloqueia a leitura de arquivos locais por padrão. Inicie o Chrome com ' +
-      '--allow-file-access-from-files, ou defina privacy.file_unique_origin como false no ' +
-      'about:config do Firefox.',
+      'Could not load bookmarks.yaml. When opening the page via file://, ' +
+      'the browser blocks local file access by default. Start Chrome with ' +
+      '--allow-file-access-from-files, or set privacy.file_unique_origin to false in ' +
+      'Firefox about:config.',
       detail
     );
   }
