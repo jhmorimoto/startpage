@@ -114,6 +114,7 @@
       if (visibleInSection) anyVisible = true;
     });
 
+    if (queries.length && anyVisible) selectBookmark(visibleBookmarks()[0]);
     empty.hidden = anyVisible || !grid.children.length;
     clearSearchButton.hidden = !search.value;
   }
