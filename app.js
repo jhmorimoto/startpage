@@ -93,6 +93,46 @@
     }
   }
 
+  /* ---------------- tooltip ---------------- */
+
+  var tooltip = document.createElement('div');
+  tooltip.className = 'url-tooltip';
+  tooltip.hidden = true;
+  document.body.appendChild(tooltip);
+
+  var TOOLTIP_OFFSET = 28;
+
+  function positionTooltip(x, y) {
+    var rect = tooltip.getBoundingClientRect();
+    var left = x - rect.width / 2;
+    var top = y + TOOLTIP_OFFSET;
+    // Keep it within the viewport horizontally and flip above the cursor if it would overflow below.
+    left = Math.min(Math.max(0, left), window.innerWidth - rect.width);
+    if (top + rect.height > window.innerHeight) top = y - rect.height - TOOLTIP_OFFSET;
+    tooltip.style.left = Math.max(0, left) + 'px';
+    tooltip.style.top = Math.max(0, top) + 'px';
+  }
+
+  grid.addEventListener('mouseover', function (event) {
+    var link = event.target.closest('a');
+    if (!link || !grid.contains(link)) return;
+    tooltip.textContent = link.href;
+    tooltip.hidden = false;
+    positionTooltip(event.clientX, event.clientY);
+  });
+
+  grid.addEventListener('mousemove', function (event) {
+    if (tooltip.hidden) return;
+    positionTooltip(event.clientX, event.clientY);
+  });
+
+  grid.addEventListener('mouseout', function (event) {
+    var link = event.target.closest('a');
+    if (!link) return;
+    if (event.relatedTarget && link.contains(event.relatedTarget)) return;
+    tooltip.hidden = true;
+  });
+
   /* ---------------- busca ---------------- */
 
   function filter(term) {
