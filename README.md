@@ -16,8 +16,7 @@ Before starting the app, copy and rename `bookmarks-example.yaml` to `bookmarks.
 - Read-only interface with no editing features
 - CSS in a dedicated `style.css` file
 - Search/filter input at the top
-- `/` keyboard shortcut to focus the search input; any letter key also focuses the search
-  and types the character
+- `/` keyboard shortcut to focus the search input; any letter key also focuses the search and types the character
 - Filtering hides non-matching items and shows only matching results
 
 ## Opening
@@ -29,10 +28,9 @@ local file access must be enabled:
   `chromium --allow-file-access-from-files`
 - **Firefox:** set `privacy.file_unique_origin` to `false` in `about:config`
 
-Alternative without browser flags: serve the directory over HTTP with `make serve`
-(equivalent to `python3 -m http.server 8000`) and open `http://localhost:8000`.
-Use `make serve PORT=9000` to choose a different port. This command can be configured
-with any service or daemon you prefer, such as systemd, init.d, background processes,
+Alternative without browser flags: serve the directory over HTTP with `make serve`(equivalent to `python3 -m http.server 8000`) and open `http://localhost:8000`. Use `make serve PORT=9000` to choose a different port.
+
+This command can be configured with any service or daemon you prefer, such as systemd, init.d, background processes,
 or autostart scripts.
 
 ## Bookmarks
