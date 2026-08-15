@@ -2,6 +2,8 @@
 
 Static start page that lists bookmarks from `bookmarks.yaml`.
 
+Before starting the app, copy and rename `bookmarks-example.yaml` to `bookmarks.yaml` to create your own set of bookmarks.
+
 ## Requirements
 
 - Plain HTML/CSS/JavaScript only, with no external frameworks
