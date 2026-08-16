@@ -20,6 +20,11 @@
   var FONT_MIN = 0.6;
   var FONT_MAX = 2.5;
 
+  var COLUMNS_KEY = 'startpage-grid-columns';
+  var COLUMNS_FALLBACK = 4;
+  var columnsOutput = document.getElementById('columns-value');
+  var currentColumns = COLUMNS_FALLBACK;
+
   function readStored(key) {
     try {
       return localStorage.getItem(key);
@@ -60,6 +65,18 @@
     applyFontSize(target, isNaN(stored) ? config.fallback : stored);
   });
 
+  function applyColumns(count) {
+    currentColumns = Math.max(1, Math.round(count) || 1);
+    document.documentElement.style.setProperty('--grid-columns', String(currentColumns));
+    columnsOutput.textContent = String(currentColumns);
+    Array.prototype.forEach.call(document.querySelectorAll('[data-columns-step="-1"]'), function (button) {
+      button.disabled = currentColumns <= 1;
+    });
+    return currentColumns;
+  }
+
+  applyColumns(parseInt(readStored(COLUMNS_KEY), 10) || COLUMNS_FALLBACK);
+
   applyTheme(document.documentElement.dataset.theme);
 
   settingsOpenButton.addEventListener('click', function () {
@@ -71,6 +88,12 @@
     if (themeButton) {
       applyTheme(themeButton.dataset.themeValue);
       writeStored('startpage-theme', themeButton.dataset.themeValue);
+      return;
+    }
+
+    var columnsButton = event.target.closest('[data-columns-step]');
+    if (columnsButton) {
+      writeStored(COLUMNS_KEY, String(applyColumns(currentColumns + Number(columnsButton.dataset.columnsStep))));
       return;
     }
 

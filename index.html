@@ -11,15 +11,18 @@
       var saved = null;
       var categorySize = null;
       var bookmarkSize = null;
+      var columns = null;
       try {
         saved = localStorage.getItem('startpage-theme');
         categorySize = localStorage.getItem('startpage-category-font-size');
         bookmarkSize = localStorage.getItem('startpage-bookmark-font-size');
+        columns = localStorage.getItem('startpage-grid-columns');
       } catch (e) { /* storage blocked */ }
       var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
       if (categorySize) document.documentElement.style.setProperty('--category-font-size', categorySize + 'rem');
       if (bookmarkSize) document.documentElement.style.setProperty('--bookmark-font-size', bookmarkSize + 'rem');
+      if (columns) document.documentElement.style.setProperty('--grid-columns', columns);
     })();
   </script>
 </head>
@@ -75,6 +78,15 @@
           <button class="setting-button" type="button" data-size-target="bookmark" data-size-step="-1" aria-label="Decrease bookmark font size">−</button>
           <output id="bookmark-size" class="setting-value"></output>
           <button class="setting-button" type="button" data-size-target="bookmark" data-size-step="1" aria-label="Increase bookmark font size">+</button>
+        </div>
+      </div>
+
+      <div class="setting">
+        <span class="setting-label">Category columns</span>
+        <div class="setting-controls">
+          <button class="setting-button" type="button" data-columns-step="-1" aria-label="Decrease number of columns">−</button>
+          <output id="columns-value" class="setting-value"></output>
+          <button class="setting-button" type="button" data-columns-step="1" aria-label="Increase number of columns">+</button>
         </div>
       </div>
     </form>

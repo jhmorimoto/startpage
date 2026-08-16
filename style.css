@@ -14,6 +14,7 @@
   --category-font-size: 1.1rem;
   --bookmark-font-size: 0.9rem;
   --page-margin: 2rem;
+  --grid-columns: 4;
 }
 
 [data-theme="dark"] {
@@ -93,7 +94,7 @@ body {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
   gap: 1.25rem;
   align-items: start;
 }
@@ -314,6 +315,10 @@ body {
 @media (max-width: 40rem) {
   :root {
     --page-margin: 1rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
   }
 }
 
