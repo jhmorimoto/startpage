@@ -6,12 +6,20 @@
   <title>Startpage</title>
   <link rel="stylesheet" href="style.css">
   <script>
-    // Inline and before the CSS paints: avoids flashing the wrong theme on load.
+    // Inline and before the CSS paints: avoids flashing the wrong theme/size on load.
     (function () {
       var saved = null;
-      try { saved = localStorage.getItem('startpage-theme'); } catch (e) { /* storage blocked */ }
+      var categorySize = null;
+      var bookmarkSize = null;
+      try {
+        saved = localStorage.getItem('startpage-theme');
+        categorySize = localStorage.getItem('startpage-category-font-size');
+        bookmarkSize = localStorage.getItem('startpage-bookmark-font-size');
+      } catch (e) { /* storage blocked */ }
       var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
+      if (categorySize) document.documentElement.style.setProperty('--category-font-size', categorySize + 'rem');
+      if (bookmarkSize) document.documentElement.style.setProperty('--bookmark-font-size', bookmarkSize + 'rem');
     })();
   </script>
 </head>
@@ -35,7 +43,42 @@
   <p id="empty" class="empty" hidden>No bookmarks found.</p>
   <div id="error" class="error" role="alert" hidden></div>
 
-  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle theme"></button>
+  <button id="settings-open" class="settings-toggle" type="button" aria-label="Open settings" title="Settings">⚙</button>
+
+  <dialog id="settings" class="settings-dialog" aria-label="Settings">
+    <form method="dialog" class="settings-form">
+      <div class="settings-header">
+        <h2>Settings</h2>
+        <button id="settings-close" class="settings-close" type="submit" value="close" aria-label="Close settings" title="Close">×</button>
+      </div>
+
+      <div class="setting">
+        <span class="setting-label">Theme</span>
+        <div class="setting-controls">
+          <button id="theme-light" class="setting-button" type="button" data-theme-value="light">☀ Light</button>
+          <button id="theme-dark" class="setting-button" type="button" data-theme-value="dark">☾ Dark</button>
+        </div>
+      </div>
+
+      <div class="setting">
+        <span class="setting-label">Category font size</span>
+        <div class="setting-controls">
+          <button class="setting-button" type="button" data-size-target="category" data-size-step="-1" aria-label="Decrease category font size">−</button>
+          <output id="category-size" class="setting-value"></output>
+          <button class="setting-button" type="button" data-size-target="category" data-size-step="1" aria-label="Increase category font size">+</button>
+        </div>
+      </div>
+
+      <div class="setting">
+        <span class="setting-label">Bookmark font size</span>
+        <div class="setting-controls">
+          <button class="setting-button" type="button" data-size-target="bookmark" data-size-step="-1" aria-label="Decrease bookmark font size">−</button>
+          <output id="bookmark-size" class="setting-value"></output>
+          <button class="setting-button" type="button" data-size-target="bookmark" data-size-step="1" aria-label="Increase bookmark font size">+</button>
+        </div>
+      </div>
+    </form>
+  </dialog>
 
   <script src="vendor/js-yaml.min.js"></script>
   <script src="app.js"></script>

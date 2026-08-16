@@ -6,25 +6,80 @@
   var clearSearchButton = document.getElementById('clear-search');
   var empty = document.getElementById('empty');
   var errorBox = document.getElementById('error');
-  var toggle = document.getElementById('theme-toggle');
+  var settingsDialog = document.getElementById('settings');
+  var settingsOpenButton = document.getElementById('settings-open');
   var selectedBookmark = null;
 
-  /* ---------------- theme ---------------- */
+  /* ---------------- settings ---------------- */
+
+  var FONT_SIZES = {
+    category: { variable: '--category-font-size', storageKey: 'startpage-category-font-size', fallback: 1.1, output: document.getElementById('category-size') },
+    bookmark: { variable: '--bookmark-font-size', storageKey: 'startpage-bookmark-font-size', fallback: 0.9, output: document.getElementById('bookmark-size') }
+  };
+  var FONT_STEP = 0.05;
+  var FONT_MIN = 0.6;
+  var FONT_MAX = 2.5;
+
+  function readStored(key) {
+    try {
+      return localStorage.getItem(key);
+    } catch (e) {
+      return null; // storage blocked
+    }
+  }
+
+  function writeStored(key, value) {
+    try {
+      localStorage.setItem(key, value);
+    } catch (e) { /* storage blocked */ }
+  }
 
   function applyTheme(theme) {
     document.documentElement.dataset.theme = theme;
-    toggle.textContent = theme === 'dark' ? '☀' : '☾';
-    toggle.title = theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-theme-value]'), function (button) {
+      button.setAttribute('aria-pressed', String(button.dataset.themeValue === theme));
+    });
   }
+
+  function applyFontSize(target, size) {
+    var config = FONT_SIZES[target];
+    var clamped = Math.min(FONT_MAX, Math.max(FONT_MIN, Math.round(size / FONT_STEP) * FONT_STEP));
+    document.documentElement.style.setProperty(config.variable, clamped.toFixed(2) + 'rem');
+    config.current = clamped;
+    config.output.textContent = clamped.toFixed(2) + 'rem';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-size-target="' + target + '"]'), function (button) {
+      var step = Number(button.dataset.sizeStep);
+      button.disabled = step < 0 ? clamped <= FONT_MIN : clamped >= FONT_MAX;
+    });
+    return clamped;
+  }
+
+  Object.keys(FONT_SIZES).forEach(function (target) {
+    var config = FONT_SIZES[target];
+    var stored = parseFloat(readStored(config.storageKey));
+    applyFontSize(target, isNaN(stored) ? config.fallback : stored);
+  });
 
   applyTheme(document.documentElement.dataset.theme);
 
-  toggle.addEventListener('click', function () {
-    var next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-    applyTheme(next);
-    try {
-      localStorage.setItem('startpage-theme', next);
-    } catch (e) { /* storage blocked */ }
+  settingsOpenButton.addEventListener('click', function () {
+    settingsDialog.showModal();
+  });
+
+  settingsDialog.addEventListener('click', function (event) {
+    var themeButton = event.target.closest('[data-theme-value]');
+    if (themeButton) {
+      applyTheme(themeButton.dataset.themeValue);
+      writeStored('startpage-theme', themeButton.dataset.themeValue);
+      return;
+    }
+
+    var sizeButton = event.target.closest('[data-size-target]');
+    if (!sizeButton) return;
+    var target = sizeButton.dataset.sizeTarget;
+    var config = FONT_SIZES[target];
+    var next = applyFontSize(target, config.current + Number(sizeButton.dataset.sizeStep) * FONT_STEP);
+    writeStored(config.storageKey, next.toFixed(2));
   });
 
   /* ---------------- render ---------------- */
@@ -235,6 +290,7 @@
   });
 
   document.addEventListener('keydown', function (event) {
+    if (settingsDialog.open) return;
     if (event.key === 'Escape') {
       search.value = '';
       filter('');
