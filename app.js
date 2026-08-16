@@ -39,6 +39,10 @@
   var shadowSizeOutput = document.getElementById('shadow-size-value');
   var currentShadowSize = SHADOW_SIZE_FALLBACK;
 
+  var TOOLTIP_ENABLED_KEY = 'startpage-tooltip-enabled';
+  var tooltipEnabledInput = document.getElementById('tooltip-enabled');
+  var tooltipEnabled = readStored(TOOLTIP_ENABLED_KEY) !== 'false';
+
   function readStored(key) {
     try {
       return localStorage.getItem(key);
@@ -155,6 +159,11 @@
     writeStored(config.storageKey, next.toFixed(2));
   });
 
+  settingsDialog.addEventListener('change', function (event) {
+    if (event.target !== tooltipEnabledInput) return;
+    writeStored(TOOLTIP_ENABLED_KEY, String(applyTooltipEnabled(tooltipEnabledInput.checked)));
+  });
+
   /* ---------------- render ---------------- */
 
   // Bloqueia esquemas perigosos como javascript: vindos do YAML.
@@ -228,6 +237,15 @@
   tooltip.hidden = true;
   document.body.appendChild(tooltip);
 
+  function applyTooltipEnabled(enabled) {
+    tooltipEnabled = Boolean(enabled);
+    tooltipEnabledInput.checked = tooltipEnabled;
+    if (!tooltipEnabled) tooltip.hidden = true;
+    return tooltipEnabled;
+  }
+
+  applyTooltipEnabled(tooltipEnabled);
+
   var TOOLTIP_OFFSET = 28;
 
   function positionTooltip(x, y) {
@@ -242,6 +260,7 @@
   }
 
   grid.addEventListener('mouseover', function (event) {
+    if (!tooltipEnabled) return;
     var link = event.target.closest('a');
     if (!link || !grid.contains(link)) return;
     tooltip.textContent = link.href;
@@ -250,7 +269,7 @@
   });
 
   grid.addEventListener('mousemove', function (event) {
-    if (tooltip.hidden) return;
+    if (!tooltipEnabled || tooltip.hidden) return;
     positionTooltip(event.clientX, event.clientY);
   });
 
