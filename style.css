@@ -7,7 +7,14 @@
   --muted: #6b7280;
   --accent: #2563eb;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
-  --category-shadow: 6px 10px 16px rgba(0, 0, 0, 0.18), 2px 4px 6px rgba(0, 0, 0, 0.12);
+  --shadow-angle: 60deg;
+  --shadow-distance: 12px;
+  --shadow-x: calc(cos(var(--shadow-angle)) * var(--shadow-distance));
+  --shadow-y: calc(sin(var(--shadow-angle)) * var(--shadow-distance));
+  --shadow-blur: calc(var(--shadow-distance) * 1.35);
+  --category-shadow:
+    var(--shadow-x) var(--shadow-y) var(--shadow-blur) rgba(0, 0, 0, 0.18),
+    calc(var(--shadow-x) / 3) calc(var(--shadow-y) / 3) calc(var(--shadow-blur) / 2.5) rgba(0, 0, 0, 0.12);
   --tooltip-bg: #fff4cc;
   --tooltip-text: #1c1f23;
   --tooltip-border: #e0c258;
@@ -26,7 +33,9 @@
   --muted: #9aa4b0;
   --accent: #7aa2f7;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
-  --category-shadow: 6px 10px 16px rgba(255, 255, 255, 0.16), 2px 4px 6px rgba(255, 255, 255, 0.1);
+  --category-shadow:
+    var(--shadow-x) var(--shadow-y) var(--shadow-blur) rgba(255, 255, 255, 0.16),
+    calc(var(--shadow-x) / 3) calc(var(--shadow-y) / 3) calc(var(--shadow-blur) / 2.5) rgba(255, 255, 255, 0.1);
   --tooltip-bg: rgba(176, 138, 0, 1);
   --tooltip-text: #1c1f23;
   --tooltip-border: var(--border);

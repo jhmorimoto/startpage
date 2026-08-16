@@ -25,6 +25,20 @@
   var columnsOutput = document.getElementById('columns-value');
   var currentColumns = COLUMNS_FALLBACK;
 
+  var ANGLE_KEY = 'startpage-shadow-angle';
+  var ANGLE_FALLBACK = 60;
+  var ANGLE_STEP = 15;
+  var angleOutput = document.getElementById('shadow-angle-value');
+  var currentAngle = ANGLE_FALLBACK;
+
+  var SHADOW_SIZE_KEY = 'startpage-shadow-size';
+  var SHADOW_SIZE_FALLBACK = 12;
+  var SHADOW_SIZE_STEP = 2;
+  var SHADOW_SIZE_MIN = 0;
+  var SHADOW_SIZE_MAX = 40;
+  var shadowSizeOutput = document.getElementById('shadow-size-value');
+  var currentShadowSize = SHADOW_SIZE_FALLBACK;
+
   function readStored(key) {
     try {
       return localStorage.getItem(key);
@@ -77,6 +91,30 @@
 
   applyColumns(parseInt(readStored(COLUMNS_KEY), 10) || COLUMNS_FALLBACK);
 
+  function applyShadowAngle(angle) {
+    currentAngle = ((Math.round(angle) % 360) + 360) % 360;
+    document.documentElement.style.setProperty('--shadow-angle', currentAngle + 'deg');
+    angleOutput.textContent = currentAngle + '\u00b0';
+    return currentAngle;
+  }
+
+  var storedAngle = parseInt(readStored(ANGLE_KEY), 10);
+  applyShadowAngle(isNaN(storedAngle) ? ANGLE_FALLBACK : storedAngle);
+
+  function applyShadowSize(size) {
+    currentShadowSize = Math.min(SHADOW_SIZE_MAX, Math.max(SHADOW_SIZE_MIN, Math.round(size)));
+    document.documentElement.style.setProperty('--shadow-distance', currentShadowSize + 'px');
+    shadowSizeOutput.textContent = currentShadowSize + 'px';
+    Array.prototype.forEach.call(document.querySelectorAll('[data-shadow-size-step]'), function (button) {
+      var step = Number(button.dataset.shadowSizeStep);
+      button.disabled = step < 0 ? currentShadowSize <= SHADOW_SIZE_MIN : currentShadowSize >= SHADOW_SIZE_MAX;
+    });
+    return currentShadowSize;
+  }
+
+  var storedShadowSize = parseInt(readStored(SHADOW_SIZE_KEY), 10);
+  applyShadowSize(isNaN(storedShadowSize) ? SHADOW_SIZE_FALLBACK : storedShadowSize);
+
   applyTheme(document.documentElement.dataset.theme);
 
   settingsOpenButton.addEventListener('click', function () {
@@ -94,6 +132,18 @@
     var columnsButton = event.target.closest('[data-columns-step]');
     if (columnsButton) {
       writeStored(COLUMNS_KEY, String(applyColumns(currentColumns + Number(columnsButton.dataset.columnsStep))));
+      return;
+    }
+
+    var angleButton = event.target.closest('[data-angle-step]');
+    if (angleButton) {
+      writeStored(ANGLE_KEY, String(applyShadowAngle(currentAngle + Number(angleButton.dataset.angleStep) * ANGLE_STEP)));
+      return;
+    }
+
+    var shadowSizeButton = event.target.closest('[data-shadow-size-step]');
+    if (shadowSizeButton) {
+      writeStored(SHADOW_SIZE_KEY, String(applyShadowSize(currentShadowSize + Number(shadowSizeButton.dataset.shadowSizeStep) * SHADOW_SIZE_STEP)));
       return;
     }
 

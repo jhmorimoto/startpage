@@ -12,17 +12,23 @@
       var categorySize = null;
       var bookmarkSize = null;
       var columns = null;
+      var shadowAngle = null;
+      var shadowSize = null;
       try {
         saved = localStorage.getItem('startpage-theme');
         categorySize = localStorage.getItem('startpage-category-font-size');
         bookmarkSize = localStorage.getItem('startpage-bookmark-font-size');
         columns = localStorage.getItem('startpage-grid-columns');
+        shadowAngle = localStorage.getItem('startpage-shadow-angle');
+        shadowSize = localStorage.getItem('startpage-shadow-size');
       } catch (e) { /* storage blocked */ }
       var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       document.documentElement.dataset.theme = saved || (prefersDark ? 'dark' : 'light');
       if (categorySize) document.documentElement.style.setProperty('--category-font-size', categorySize + 'rem');
       if (bookmarkSize) document.documentElement.style.setProperty('--bookmark-font-size', bookmarkSize + 'rem');
       if (columns) document.documentElement.style.setProperty('--grid-columns', columns);
+      if (shadowAngle) document.documentElement.style.setProperty('--shadow-angle', shadowAngle + 'deg');
+      if (shadowSize) document.documentElement.style.setProperty('--shadow-distance', shadowSize + 'px');
     })();
   </script>
 </head>
@@ -87,6 +93,24 @@
           <button class="setting-button" type="button" data-columns-step="-1" aria-label="Decrease number of columns">−</button>
           <output id="columns-value" class="setting-value"></output>
           <button class="setting-button" type="button" data-columns-step="1" aria-label="Increase number of columns">+</button>
+        </div>
+      </div>
+
+      <div class="setting">
+        <span class="setting-label">Shadow angle</span>
+        <div class="setting-controls">
+          <button class="setting-button" type="button" data-angle-step="-1" aria-label="Decrease shadow angle">−</button>
+          <output id="shadow-angle-value" class="setting-value"></output>
+          <button class="setting-button" type="button" data-angle-step="1" aria-label="Increase shadow angle">+</button>
+        </div>
+      </div>
+
+      <div class="setting">
+        <span class="setting-label">Shadow size</span>
+        <div class="setting-controls">
+          <button class="setting-button" type="button" data-shadow-size-step="-1" aria-label="Decrease shadow size">−</button>
+          <output id="shadow-size-value" class="setting-value"></output>
+          <button class="setting-button" type="button" data-shadow-size-step="1" aria-label="Increase shadow size">+</button>
         </div>
       </div>
     </form>
