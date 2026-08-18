@@ -10,6 +10,8 @@
   var settingsOpenButton = document.getElementById('settings-open');
   var selectedBookmark = null;
 
+  search.focus();
+
   /* ---------------- settings ---------------- */
 
   var FONT_SIZES = {
