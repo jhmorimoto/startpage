@@ -10,7 +10,17 @@
   var settingsOpenButton = document.getElementById('settings-open');
   var selectedBookmark = null;
 
-  search.focus();
+  // O Firefox pré-carrega a página de nova aba em background: focar só no load não basta,
+  // é preciso refocar quando a aba realmente aparece.
+  function focusSearch() {
+    if (document.hidden || (settingsDialog && settingsDialog.open)) return;
+    search.focus({ preventScroll: true });
+  }
+
+  focusSearch();
+  window.addEventListener('pageshow', focusSearch);
+  window.addEventListener('focus', focusSearch);
+  document.addEventListener('visibilitychange', focusSearch);
 
   /* ---------------- settings ---------------- */
 
