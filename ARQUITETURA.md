@@ -60,7 +60,7 @@ Para garantir que as preferências do usuário (como modo escuro ou tamanho da f
 
 | Configuração | Chave no `localStorage` | Método de Aplicação |
 | :--- | :--- | :--- |
-| Tema (Light/Dark) | `startpage-theme` | Atributo `data-theme` no `<html>` |
+| Tema (System/Light/Dark) | `startpage-theme` | Atributo `data-theme` no `<html>`; System acompanha `prefers-color-scheme` |
 | Tamanho da Fonte (Categoria) | `startpage-category-font-size` | CSS Variable `--category-font-size` |
 | Tamanho da Fonte (Bookmark) | `startpage-bookmark-font-size` | CSS Variable `--bookmark-font-size` |
 | Colunas do Grid | `startpage-grid-columns` | CSS Variable `--grid-columns` |

@@ -11,8 +11,8 @@ Before starting the app, copy and rename `bookmarks-example.yaml` to `bookmarks.
 - Bookmarks loaded from a YAML file on the filesystem
 - Each bookmark has a title, URL, and category
 - Bookmarks displayed in panels, one per category
-- Simple styling with flexible light and dark themes
-- Button in the bottom-right corner to switch themes
+- Light and dark themes, with an option to follow the browser theme
+- Settings in the bottom-right corner to choose the theme
 - Read-only interface with no editing features
 - CSS in a dedicated `style.css` file
 - Search/filter input at the top
@@ -54,4 +54,4 @@ Only `http://` and `https://` URLs are rendered as links.
 - `Esc` clears the filter
 - `Up`, `Down`, `Left`, and `Right` navigate through the results
 - `Enter` opens the selected bookmark
-- The bottom-right button switches between light and dark themes
+- Settings in the bottom-right corner choose the light, dark, or system theme
