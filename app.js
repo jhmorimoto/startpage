@@ -206,6 +206,11 @@
     if (!title && !url) return null;
 
     var li = document.createElement('li');
+    if (title === '---' && !url) {
+      li.className = 'bookmark-divider';
+      li.appendChild(document.createElement('hr'));
+      return li;
+    }
     li.className = 'bookmark';
     li.dataset.haystack = (categoryName + ' ' + title + ' ' + url).toLowerCase();
 
@@ -231,7 +236,7 @@
     var items = bookmarks.map(function (bookmark) {
       return renderBookmark(bookmark, categoryName);
     }).filter(Boolean);
-    if (!items.length) return null;
+    if (!items.some(function (item) { return item.className === 'bookmark'; })) return null;
 
     var section = document.createElement('section');
     section.className = 'category';
@@ -319,6 +324,9 @@
 
     Array.prototype.forEach.call(grid.children, function (section) {
       var visibleInSection = 0;
+      Array.prototype.forEach.call(section.querySelectorAll('.bookmark-divider'), function (li) {
+        li.hidden = !!queries.length;
+      });
       Array.prototype.forEach.call(section.querySelectorAll('.bookmark'), function (li) {
         var match = !queries.length || queries.every(function (query) {
           return li.dataset.haystack.indexOf(query) !== -1;

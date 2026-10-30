@@ -14,7 +14,7 @@ A busca filtra os favoritos carregados sem nova requisição. O teclado permite 
 
 1. A renderização cria para cada favorito um texto de busca com categoria, título e URL em minúsculas.
 2. A entrada do usuário é separada em termos; todos os termos devem aparecer no texto do favorito para que ele corresponda.
-3. Itens e categorias sem correspondências são ocultados. A interface atualiza o estado vazio, o botão de limpar e a seleção inicial.
+3. Itens e categorias sem correspondências são ocultados; divisórias entre favoritos ficam ocultas durante a busca. A interface atualiza o estado vazio, o botão de limpar e a seleção inicial.
 4. Setas movem a seleção entre favoritos visíveis, priorizando a posição espacial e usando a ordem dos resultados como alternativa.
 5. `Enter` ativa o link selecionado. `Escape` limpa o filtro. `/` foca e seleciona a busca; uma tecla de letra foca a busca e inicia o texto digitado.
 

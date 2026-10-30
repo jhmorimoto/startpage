@@ -6,7 +6,7 @@ O catálogo é mantido em `bookmarks.yaml` e carregado quando a página inicia. 
 
 ## Componentes principais
 
-- [bookmarks.yaml](../../bookmarks.yaml): dados ativos organizados em `categories`, cada uma com `name` e `bookmarks`; cada favorito fornece `title` e `url`.
+- [bookmarks.yaml](../../bookmarks.yaml): dados ativos organizados em `categories`, cada uma com `name` e `bookmarks`; cada favorito fornece `title` e `url`, exceto o separador `title: ---`, sem URL.
 - [bookmarks-example.yaml](../../bookmarks-example.yaml): exemplo inicial do formato.
 - [app.js](../../app.js): busca os dados, verifica o formato de categorias/listas, constrói o DOM e apresenta erros.
 - [vendor/js-yaml.min.js](../../vendor/js-yaml.min.js): parser YAML local, exposto como `jsyaml`.
@@ -17,7 +17,7 @@ O catálogo é mantido em `bookmarks.yaml` e carregado quando a página inicia. 
 1. `fetch` solicita `bookmarks.yaml` com um parâmetro temporal e `cache: 'no-store'`.
 2. A resposta HTTP é verificada e convertida em texto; `jsyaml.load` converte o YAML em objeto JavaScript.
 3. `render` percorre `data.categories`, normaliza nomes e listas ausentes e cria somente categorias com favoritos renderizáveis.
-4. Cada favorito recebe texto e URL normalizados. Endereços HTTP(S) viram links; outros esquemas aparecem como texto inválido e não são navegáveis.
+4. Cada favorito recebe texto e URL normalizados. `title: ---` sem URL vira uma linha horizontal dentro da categoria, sem participar da busca ou navegação. Endereços HTTP(S) viram links; outros esquemas aparecem como texto inválido e não são navegáveis. Categorias apenas com separadores são omitidas.
 5. Falhas de rede, status HTTP ou parsing são mostradas na região de erro da página.
 
 ## Padrões de design

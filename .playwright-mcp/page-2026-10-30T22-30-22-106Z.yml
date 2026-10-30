@@ -1,0 +1,268 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - searchbox "Search bookmarks" [active] [ref=e4]
+  - main [ref=e5]:
+    - generic [ref=e6]:
+      - heading "Communication" [level=2] [ref=e7]
+      - list [ref=e8]:
+        - listitem [ref=e9]:
+          - link "WhatsApp Web" [ref=e10] [cursor=pointer]:
+            - /url: https://web.whatsapp.com
+        - listitem [ref=e11]:
+          - link "Telegram Web" [ref=e12] [cursor=pointer]:
+            - /url: https://web.telegram.org
+        - listitem [ref=e13]:
+          - link "Teams" [ref=e14] [cursor=pointer]:
+            - /url: https://teams.cloud.microsoft
+        - listitem [ref=e15]:
+          - link "Outlook" [ref=e16] [cursor=pointer]:
+            - /url: https://outlook.office.com/mail/
+        - listitem [ref=e17]:
+          - link "Discord" [ref=e18] [cursor=pointer]:
+            - /url: https://discord.com/channels/@me
+    - generic [ref=e19]:
+      - heading "Google Meet" [level=2] [ref=e20]
+      - list [ref=e21]:
+        - listitem [ref=e22]:
+          - link "Sementes de Amor" [ref=e23] [cursor=pointer]:
+            - /url: https://meet.google.com/zey-jwvj-zyw
+        - listitem [ref=e24]:
+          - link "Conhecimentos Espirituais" [ref=e25] [cursor=pointer]:
+            - /url: https://meet.google.com/kco-pofz-wee
+        - listitem [ref=e26]:
+          - link "Apometria" [ref=e27] [cursor=pointer]:
+            - /url: https://meet.google.com/ffg-unyy-xkv
+        - listitem [ref=e28]:
+          - link "Apometria (commercial)" [ref=e29] [cursor=pointer]:
+            - /url: https://meet.google.com/ipx-rwff-qri
+        - listitem [ref=e30]:
+          - link "Sala de Teste" [ref=e31] [cursor=pointer]:
+            - /url: https://meet.google.com/nnc-utip-oso
+    - generic [ref=e32]:
+      - heading "Google" [level=2] [ref=e33]
+      - list [ref=e34]:
+        - listitem [ref=e35]:
+          - link "YouTube" [ref=e36] [cursor=pointer]:
+            - /url: https://www.youtube.com/
+        - listitem [ref=e37]:
+          - link "YouTube Studio" [ref=e38] [cursor=pointer]:
+            - /url: https://studio.youtube.com/
+        - listitem [ref=e39]:
+          - link "YouTube Music" [ref=e40] [cursor=pointer]:
+            - /url: https://music.youtube.com/
+        - listitem [ref=e41]:
+          - link "GMail" [ref=e42] [cursor=pointer]:
+            - /url: https://mail.google.com/
+        - listitem [ref=e43]:
+          - link "Google Maps" [ref=e44] [cursor=pointer]:
+            - /url: https://www.google.com/maps/
+        - listitem [ref=e45]:
+          - link "Calendar" [ref=e46] [cursor=pointer]:
+            - /url: https://calendar.google.com/
+    - generic [ref=e47]:
+      - heading "Google Drive" [level=2] [ref=e48]
+      - list [ref=e49]:
+        - listitem [ref=e50]:
+          - link "Google Drive" [ref=e51] [cursor=pointer]:
+            - /url: https://drive.google.com/drive/my-drive
+        - listitem [ref=e52]:
+          - link "Estudos UCEM" [ref=e53] [cursor=pointer]:
+            - /url: https://drive.google.com/drive/folders/0AJhy9pmgyDqgUk9PVA
+        - listitem [ref=e54]:
+          - link "Almir e Julio" [ref=e55] [cursor=pointer]:
+            - /url: https://drive.google.com/drive/folders/0AGvkfo2Q_r92Uk9PVA
+        - listitem [ref=e56]:
+          - link "Shared Drives" [ref=e57] [cursor=pointer]:
+            - /url: https://drive.google.com/drive/shared-drives
+    - generic [ref=e58]:
+      - heading "Google AI" [level=2] [ref=e59]
+      - list [ref=e60]:
+        - listitem [ref=e61]:
+          - link "Gemini" [ref=e62] [cursor=pointer]:
+            - /url: https://gemini.google.com/app
+        - listitem [ref=e63]:
+          - link "NotebookLM" [ref=e64] [cursor=pointer]:
+            - /url: https://notebooklm.google.com/
+        - listitem [ref=e65]:
+          - link "AI Studio" [ref=e66] [cursor=pointer]:
+            - /url: https://aistudio.google.com/
+    - generic [ref=e67]:
+      - heading "For Fun (4fun)" [level=2] [ref=e68]
+      - list [ref=e69]:
+        - listitem [ref=e70]:
+          - link "TV Calendar" [ref=e71] [cursor=pointer]:
+            - /url: https://www.pogdesign.co.uk/cat/
+        - listitem [ref=e72]:
+          - link "JustWatch" [ref=e73] [cursor=pointer]:
+            - /url: https://www.justwatch.com/br/novo
+        - listitem [ref=e74]:
+          - link "Disney Plus" [ref=e75] [cursor=pointer]:
+            - /url: https://www.disneyplus.com/home
+        - listitem [ref=e76]:
+          - link "HBO Max" [ref=e77] [cursor=pointer]:
+            - /url: https://play.max.com/
+        - listitem [ref=e78]:
+          - link "Netflix" [ref=e79] [cursor=pointer]:
+            - /url: https://netflix.com
+        - listitem [ref=e80]:
+          - link "Paramount Plus" [ref=e81] [cursor=pointer]:
+            - /url: https://www.paramountplus.com/home
+        - listitem [ref=e82]:
+          - link "Amazon Prime Video" [ref=e83] [cursor=pointer]:
+            - /url: https://www.primevideo.com/-/pt/storefront
+        - listitem [ref=e84]:
+          - link "Globo Play" [ref=e85] [cursor=pointer]:
+            - /url: https://globoplay.globo.com/
+        - listitem [ref=e86]:
+          - link "Mercado Play" [ref=e87] [cursor=pointer]:
+            - /url: https://play.mercadolivre.com.br/
+        - listitem [ref=e88]:
+          - link "BBC iPlayer" [ref=e89] [cursor=pointer]:
+            - /url: https://www.bbc.co.uk/iplayer
+    - generic [ref=e90]:
+      - heading "TJPR" [level=2] [ref=e91]
+      - list [ref=e92]:
+        - listitem [ref=e93]:
+          - link "Hercules" [ref=e94] [cursor=pointer]:
+            - /url: https://portal.tjpr.jus.br/hercules
+        - listitem [ref=e95]:
+          - link "Ponto" [ref=e96] [cursor=pointer]:
+            - /url: https://portal.tjpr.jus.br/ponto/registrar-ponto.jsf
+        - listitem [ref=e97]:
+          - link "Portal www" [ref=e98] [cursor=pointer]:
+            - /url: https://www.tjpr.jus.br
+        - listitem [ref=e99]:
+          - link "Cloud.tjpr.jus.br" [ref=e100] [cursor=pointer]:
+            - /url: https://cloud.tjpr.jus.br
+        - listitem [ref=e101]:
+          - link "Contracheque" [ref=e102] [cursor=pointer]:
+            - /url: https://www.tjpr.jus.br/group/guest/contracheques
+        - listitem [ref=e103]:
+          - link "Captive Portal" [ref=e104] [cursor=pointer]:
+            - /url: https://captiveportal.tjpr.jus.br:6082/php/uid.php?vsys=1&rule=15
+        - listitem [ref=e105]:
+          - link "Udemy" [ref=e106] [cursor=pointer]:
+            - /url: https://tjprbr.udemy.com/organization/home/
+        - listitem [ref=e107]:
+          - separator [ref=e108]
+        - listitem [ref=e109]:
+          - link "Sharepoint" [ref=e110] [cursor=pointer]:
+            - /url: https://tjpr-my.sharepoint.com/my
+        - listitem [ref=e111]:
+          - link "Copilot" [ref=e112] [cursor=pointer]:
+            - /url: https://copilot.microsoft.com
+    - generic [ref=e113]:
+      - heading "Leituras UCEM" [level=2] [ref=e114]
+      - list [ref=e115]:
+        - listitem [ref=e116]:
+          - link "Leitor Kindle" [ref=e117] [cursor=pointer]:
+            - /url: https://ler.amazon.com.br/
+        - listitem [ref=e118]:
+          - link "Conhecimentos Espirituais Calendario 2026" [ref=e119] [cursor=pointer]:
+            - /url: https://docs.google.com/spreadsheets/d/1P5_3F2bwUUBo740eorbQnyrR7eGWNO1eGwBYdZiyOfY/edit?gid=113819734#gid=113819734
+    - generic [ref=e120]:
+      - heading "Shopping" [level=2] [ref=e121]
+      - list [ref=e122]:
+        - listitem [ref=e123]:
+          - link "Mercado Livre" [ref=e124] [cursor=pointer]:
+            - /url: https://www.mercadolivre.com.br/
+        - listitem [ref=e125]:
+          - link "AliExpress" [ref=e126] [cursor=pointer]:
+            - /url: https://aliexpress.com/
+        - listitem [ref=e127]:
+          - link "AliExpress Pedidos" [ref=e128] [cursor=pointer]:
+            - /url: https://www.aliexpress.com/p/order/index.html
+        - listitem [ref=e129]:
+          - link "Correios - Rastreamento de pacotes" [ref=e130] [cursor=pointer]:
+            - /url: https://rastreamento.correios.com.br/
+    - generic [ref=e131]:
+      - heading "Programming" [level=2] [ref=e132]
+      - list [ref=e133]:
+        - listitem [ref=e134]:
+          - link "All Command lines" [ref=e135] [cursor=pointer]:
+            - /url: https://www.commandlinefu.com/commands/browse
+    - generic [ref=e136]:
+      - heading "News" [level=2] [ref=e137]
+      - list [ref=e138]:
+        - listitem [ref=e139]:
+          - link "Google News" [ref=e140] [cursor=pointer]:
+            - /url: https://news.google.com/u/1/home?hl=pt-BR&gl=BR&ceid=BR:pt-419&pageId=none
+        - listitem [ref=e141]:
+          - link "Engadget" [ref=e142] [cursor=pointer]:
+            - /url: https://www.engadget.com/
+        - listitem [ref=e143]:
+          - link "Tech URLs" [ref=e144] [cursor=pointer]:
+            - /url: https://techurls.com/
+        - listitem [ref=e145]:
+          - link "Dev URLs" [ref=e146] [cursor=pointer]:
+            - /url: https://devurls.com/
+        - listitem [ref=e147]:
+          - link "OMG Ubuntu" [ref=e148] [cursor=pointer]:
+            - /url: https://www.omgubuntu.co.uk/
+        - listitem [ref=e149]:
+          - link "Omelete" [ref=e150] [cursor=pointer]:
+            - /url: https://www.omelete.com.br/
+        - listitem [ref=e151]:
+          - link "Make Use Of" [ref=e152] [cursor=pointer]:
+            - /url: https://www.makeuseof.com/
+        - listitem [ref=e153]:
+          - link "Ars Technica" [ref=e154] [cursor=pointer]:
+            - /url: https://arstechnica.com/
+        - listitem [ref=e155]:
+          - link "9to5 Google" [ref=e156] [cursor=pointer]:
+            - /url: https://9to5google.com/
+        - listitem [ref=e157]:
+          - link "Android Police" [ref=e158] [cursor=pointer]:
+            - /url: https://www.androidpolice.com/
+    - generic [ref=e159]:
+      - heading "Ferramentas" [level=2] [ref=e160]
+      - list [ref=e161]:
+        - listitem [ref=e162]:
+          - link "Mic Test Online" [ref=e163] [cursor=pointer]:
+            - /url: https://webcammictest.com/check-mic.html
+        - listitem [ref=e164]:
+          - link "Speed Test Ligga" [ref=e165] [cursor=pointer]:
+            - /url: https://liggavc.com.br/speed-test/
+        - listitem [ref=e166]:
+          - link "ifconfig.me" [ref=e167] [cursor=pointer]:
+            - /url: https://ifconfig.me/
+        - listitem [ref=e168]:
+          - link "Leonardo AI" [ref=e169] [cursor=pointer]:
+            - /url: https://app.leonardo.ai
+        - listitem [ref=e170]:
+          - link "PopPop AI App" [ref=e171] [cursor=pointer]:
+            - /url: https://app.poppop.ai/home
+        - listitem [ref=e172]:
+          - link "ClipChamp Video Editor" [ref=e173] [cursor=pointer]:
+            - /url: https://app.clipchamp.com/
+        - listitem [ref=e174]:
+          - link "Canva" [ref=e175] [cursor=pointer]:
+            - /url: https://canva.com
+        - listitem [ref=e176]:
+          - link "Streamyard" [ref=e177] [cursor=pointer]:
+            - /url: https://streamyard.com
+        - listitem [ref=e178]:
+          - link "ChatGPT" [ref=e179] [cursor=pointer]:
+            - /url: https://chatgpt.com
+    - generic [ref=e180]:
+      - heading "Almir" [level=2] [ref=e181]
+      - list [ref=e182]:
+        - listitem [ref=e183]:
+          - link "Streamyard Live Streamming" [ref=e184] [cursor=pointer]:
+            - /url: https://streamyard.com
+        - listitem [ref=e185]:
+          - link "YT Energia e Espiritualidade" [ref=e186] [cursor=pointer]:
+            - /url: https://www.youtube.com/@EnergiaeEspiritualidade
+        - listitem [ref=e187]:
+          - link "YT Limpeza Energetica e Mentoria" [ref=e188] [cursor=pointer]:
+            - /url: https://www.youtube.com/@LimpezaEnergeticaEMentoria
+    - generic [ref=e189]:
+      - heading "Links localhost e localnet" [level=2] [ref=e190]
+      - list [ref=e191]:
+        - listitem [ref=e192]:
+          - link "PiHole local dns (Pi-Hole)" [ref=e193] [cursor=pointer]:
+            - /url: https://100.64.53.53/admin/login
+        - listitem [ref=e194]:
+          - link "Wifi Router (Home / LAN)" [ref=e195] [cursor=pointer]:
+            - /url: http://192.168.18.1/
+  - button "Open settings" [ref=e196] [cursor=pointer]: ⚙

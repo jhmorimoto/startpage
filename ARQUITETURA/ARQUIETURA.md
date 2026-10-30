@@ -20,8 +20,8 @@ Os módulos de comportamento são responsabilidades lógicas dentro de `app.js`,
 
 1. `index.html` carrega o CSS, aplica preferências salvas antes da primeira pintura e inclui `vendor/js-yaml.min.js` antes de `app.js`.
 2. `app.js` solicita `bookmarks.yaml` com `fetch` e cache desativado, converte o texto YAML em dados usando `jsyaml.load` e monta os elementos de categoria e favorito.
-3. A renderização aceita categorias e listas de favoritos válidas; só cria links para endereços `http://` ou `https://`. Categorias sem favoritos válidos são omitidas.
-4. A busca percorre os elementos já renderizados e esconde os que não correspondem. A seleção por teclado e a abertura de um favorito operam sobre os resultados visíveis.
+3. A renderização aceita categorias e listas de favoritos válidas; só cria links para endereços `http://` ou `https://`. Um item com `title: ---` e sem URL vira uma linha divisória; categorias sem favoritos são omitidas.
+4. A busca percorre os favoritos já renderizados e esconde os que não correspondem, além das linhas divisórias durante o filtro. A seleção por teclado e a abertura de um favorito operam sobre os resultados visíveis.
 5. Os controles de preferências atualizam variáveis CSS e guardam valores no `localStorage`. O CSS usa essas variáveis para desenhar a interface.
 
 Se a leitura do YAML falhar, a interface exibe uma mensagem de erro. O acesso via `file://` depende de permissões específicas do navegador; servir a pasta por HTTP local é a alternativa indicada.
